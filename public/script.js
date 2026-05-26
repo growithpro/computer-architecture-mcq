@@ -196,17 +196,20 @@ questions.forEach((question, index) => {
 });
 
 
-async function submitQuiz() {
+
+async function submitQuiz(){
+
+    alert("Button Clicked");
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
 
     let score = 0;
 
-    questions.forEach((q, index) => {
+    questions.forEach((q,index)=>{
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
 
-        if (selected && selected.value === q.answer) {
+        if(selected && selected.value === q.answer){
             score++;
         }
     });
@@ -214,35 +217,36 @@ async function submitQuiz() {
     document.getElementById("result").innerHTML =
         `<h2>Your Score: ${score}/20</h2>`;
 
-    alert("Submit button clicked!");
-
     try {
 
         const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
             },
-            body: JSON.stringify({
+            body:JSON.stringify({
                 name,
                 email,
                 score
             })
         });
 
+        alert("Fetch Completed");
+
         const data = await response.json();
 
         console.log(data);
 
-        alert("API Response: " + JSON.stringify(data));
+        alert(JSON.stringify(data));
 
-    } catch (error) {
+    } catch(error){
 
         console.log(error);
 
-        alert("ERROR: " + error.message);
+        alert("ERROR => " + error.message);
     }
 }
+
 
 
 
