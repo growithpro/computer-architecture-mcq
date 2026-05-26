@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   try {
 
     await resend.emails.send({
-      from: '<anything>@saaelki.resend.app',
+      from: 'MCQ Test <anything@saaelki.resend.app>',
       to: 'naveen.joshi.net@gmail.com',
       subject: 'New MCQ Test Result',
       html: `
