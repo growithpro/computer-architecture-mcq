@@ -223,10 +223,13 @@ async function submitQuiz() {
             "https://script.google.com/macros/s/AKfycbzxwpmRPPpS6ErkMxmkCO-u7AwHazmAQUohpPNrAgalZ_corilCW2NLrTdAkK9WV2hSLw/exec",
             {
                 method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
                 body: JSON.stringify({
-                    name,
-                    email,
-                    score
+                    name: name,
+                    email: email,
+                    score: score
                 })
             }
         );
