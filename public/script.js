@@ -233,7 +233,10 @@ async function submitQuiz() {
 
         alert("Fetch Completed");
 
-        const data = await response.json();
+        // const data = await response.json();
+        const text = await response.text();
+        alert(text);
+        console.log(text);
 
         console.log(data);
 
